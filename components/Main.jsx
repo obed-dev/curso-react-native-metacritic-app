@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FlatList, View, ActivityIndicator } from "react-native";
-import { fetchingGames } from "../lib/rawpGames";
+import { FetchingGames } from "../lib/RawpGames";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { AnimatedGameCard } from "./GameCard";
 import { Logo } from "./Logo";
@@ -11,7 +11,7 @@ export function Main() {
   const insets = useSafeAreaInsets();
 
   useEffect(() => {
-    fetchingGames().then((gamesList) => {
+    FetchingGames().then((gamesList) => {
       setGames(gamesList); // Guardamos la lista de juegos
     });
   }, []);

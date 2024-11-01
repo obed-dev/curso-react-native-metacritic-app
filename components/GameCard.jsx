@@ -3,13 +3,13 @@ import { View, StyleSheet, Text, Image, Animated } from "react-native";
 
 export function GameCard({ game }) {
   return (
-    <View key={game.slug} style={styles.card}>
+    <View  key={game.slug} style={styles.card}>
       <Image source={{ uri: game.background_image }} style={styles.image} />
       <Text style={styles.title}>{game.name}</Text>
       <Text style={styles.score}>Score: {game.rating}</Text>
-      <Text style={styles.description}>
-        {game.description || "No description available"}
-      </Text>
+      <Text style={styles.info}>Released: {game.released || "No description available"}</Text>
+      <Text style={styles.info}>Platforms: {game.platforms?.map(p => p.platform.name).join(', ') || "No description available"}</Text>
+
     </View>
   );
 }
@@ -42,15 +42,18 @@ const styles = StyleSheet.create({
     height: 147,
     borderRadius: 10,
   },
+
+
   title: {
     fontSize: 20,
     fontWeight: "bold",
     color: "#fff",
     marginTop: 10,
   },
-  description: {
+  info: {
     fontSize: 16,
     color: "#eee",
+    marginBottom: 10,
   },
   score: {
     fontSize: 20,
